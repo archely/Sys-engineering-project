@@ -6,7 +6,7 @@
 #https://devqa.io/encrypt-decrypt-data-python/
  
 
-#generates
+#generates keys
 
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
