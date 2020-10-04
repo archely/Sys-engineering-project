@@ -1,19 +1,15 @@
 
-#Sources:
 #https://cryptography.io/en/latest/fernet/
 #https://devqa.io/encrypt-decrypt-data-python/
-#https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
-#https://devqa.io/encrypt-decrypt-data-python/
- 
 
-#generate keys
+ -----------------------------
 
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import hashes
 from cryptography.fernet import Fernet
-
+import cryptography
 
 def keyGenerator(): # private and public key
     privteKey = rsa.generate_private_key(public_exponent=65537, key_size=2048,backend=default_backend())
