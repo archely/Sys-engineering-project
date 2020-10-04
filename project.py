@@ -1,13 +1,13 @@
-'''
-Sources:
- https://cryptography.io/en/latest/fernet/
- https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
- https://devqa.io/encrypt-decrypt-data-python/
- https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
-'''
+
+#Sources:
+#https://cryptography.io/en/latest/fernet/
+#https://devqa.io/encrypt-decrypt-data-python/
+#https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/
+#https://devqa.io/encrypt-decrypt-data-python/
+ 
 
 #generates
-import os
+
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric import padding
@@ -22,18 +22,18 @@ def keyGenerator(): # private and public key
 
 
 def encryption(publicKey, Encrypt): #encrypts /   public key
-    cipheredText = publicKey.encrypt(textToEncrypt, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(), label=None))
-    return cipheredText
+    ciphered = publicKey.encrypt(textToEncrypt, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(), label=None))
+    return ciphered
 
 def decryption(privatKey, ciphered): #decrypts and encrypted  / private key
     noCipheredText = privatKey.decrypt(ciphered, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(), label=None))
-    return noCipheredText
+    return Ciphered
 
-def sym_Encryption(symmetricKey, Encrypt): #encrypts message / symmetric key
+def symmetric_Encryption(symmetricKey, Encrypt): #encrypts message / symmetric key
     cipher = Fernet(symmetricKey)
     return cipher.encrypt(Encrypt)
 
-def sym_Decryption(symmetricKey, Decrypt): #decrypts encrypted message / symmetric key
+def symmetric_Decryption(symmetricKey, Decrypt): #decrypts encrypted message / symmetric key
     cipher = Fernet(symmetricKey)
     return cipher.decrypt(Decrypt)
 
@@ -54,4 +54,5 @@ decryptionProcess = decryption(bobkey["privateKey"], encryptionProcess)
 # encrypted symmetric key is sent to bob
 decryptedMsg = symmetric_Decryption(decryptionProcess, symmetric_Encryption(decryptionProcess, secretMsg))
 
-print(f' Message: {decryptedMsg.decode()}')
+
+print("Message:" + {decryptedMsg.decode()} )
