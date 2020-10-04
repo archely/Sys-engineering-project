@@ -21,21 +21,21 @@ def keyGenerator(): # private and public key
     return {"privateKey": privateKey, "publicKey": publicKey} 
 
 
-def encryption(pubKey, textToEncrypt): #encrypts /   public key
-    cipheredText = pubKey.encrypt(textToEncrypt, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(), label=None))
+def encryption(publicKey, Encrypt): #encrypts /   public key
+    cipheredText = publicKey.encrypt(textToEncrypt, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(), label=None))
     return cipheredText
 
-def decryption(privatKey, cipheredText): #decrypts and encrypted  / private key
-    noCipheredText = privatKey.decrypt(cipheredText, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(), label=None))
+def decryption(privatKey, ciphered): #decrypts and encrypted  / private key
+    noCipheredText = privatKey.decrypt(ciphered, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(), label=None))
     return noCipheredText
 
-def sym_Encryption(symmetricKey, msgToEncrypt): #encrypts message / symmetric key
+def sym_Encryption(symmetricKey, Encrypt): #encrypts message / symmetric key
     cipher = Fernet(symmetricKey)
-    return cipher.encrypt(msgToEncrypt)
+    return cipher.encrypt(Encrypt)
 
-def sym_Decryption(symmetricKey, msgToDecrypt): #decrypts encrypted message / symmetric key
+def sym_Decryption(symmetricKey, Decrypt): #decrypts encrypted message / symmetric key
     cipher = Fernet(symmetricKey)
-    return cipher.decrypt(msgToDecrypt)
+    return cipher.decrypt(Decrypt)
 
 
 bobkey = {}
